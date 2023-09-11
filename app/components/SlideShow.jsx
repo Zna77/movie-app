@@ -16,7 +16,8 @@ const Slideshow = () => {
   const arrowStyles = {
     color: "darkGray", // Customize the color here
     transform: "scale(0.7)",
-    marginLeft: "0 10px", // Customize the font size here
+    marginLeft: -10,
+    marginRight: -10, // Customize the font size here
   };
 
   useEffect(() => {
