@@ -37,9 +37,9 @@ const Hero = () => {
             className="w-full h-full object-contain rounded-xl opacity-60"
           />
 
-          <div className="inset-0 space-y-1 py-10 px-4 max-w-fit absolute text-center text-sm z-10">
+          <div className="inset-0 space-y-1 sm:top-52 px-4 max-w-fit absolute text-center text-sm z-10">
             <h1
-              className={`font-roboto text-2xl text-center text-white font-semibold break-normal uppercase`}
+              className={`font-roboto text-2xl sm:text-4xl text-center text-white font-semibold sm:font-bold break-normal uppercase`}
             >
               {trendingMovie.title}
             </h1>
@@ -48,7 +48,7 @@ const Hero = () => {
               Release Date: {trendingMovie.release_date}
             </p>
             <div className="flex flex-row justify-center items-baseline space-x-2 font-medium text-lg">
-              <div className="font-medium text-sm px-1 py-1 rounded-full flex flex-row justify-center items-baseline">
+              <div className="font-medium text-sm px-1 py-1 sm:px-2 sm:bg-gradient-to-r from-sky-500 to-indigo-500 rounded-full flex flex-row justify-center items-baseline">
                 <FontAwesomeIcon icon={faStar} className="pr-1" />
                 {trendingMovie.vote_average.toFixed(1)}
               </div>
@@ -56,12 +56,14 @@ const Hero = () => {
                 ({trendingMovie.vote_count} votes)
               </p>
             </div>
-            <div className="flex flex-col justify-center items-center mt-10 space-y-6 ">
-              <p className={`w-fit h-fit text-gray-100 font-roboto `}>
+            <div className="flex flex-col justify-center items-center mt-10 space-y-6 sm:pt-5 ">
+              <p
+                className={`w-fit h-fit text-gray-100 sm:text-left sm:text-base break-all font-roboto `}
+              >
                 {trendingMovie.overview}
               </p>
               <Link href={`/movie/${trendingMovie.id}`}>
-                <button className="bg-indigo-700 text-white font-semibold px-8 py-2 rounded-full hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-red-400">
+                <button className="bg-indigo-600 text-white font-semibold px-8 py-2 rounded-full hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-red-400">
                   Watch Now
                 </button>
               </Link>

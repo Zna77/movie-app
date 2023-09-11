@@ -7,10 +7,7 @@ export default function RootLayout({ children }) {
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap"
-        />
+        <link />
       </Head>
       <div className="bg-gray-950 min-h-screen font-poppins">{children}</div>
     </>

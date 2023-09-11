@@ -16,8 +16,8 @@ const Slideshow = () => {
   const arrowStyles = {
     color: "darkGray", // Customize the color here
     transform: "scale(0.7)",
-    marginLeft: -10,
-    marginRight: -10, // Customize the font size here
+    marginLeft: -12,
+    marginRight: -12, // Customize the font size here
   };
 
   useEffect(() => {
@@ -58,10 +58,10 @@ const Slideshow = () => {
               <img
                 src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
                 alt={movie.title}
-                className="w-full h-full object-contain rounded-2xl"
+                className="w-full h-full object-contain rounded-2xl opacity-90"
               />
               <div className="absolute flex flex-col justify-end items-start inset-0 p-2 z-10">
-                <h2 className="font-roboto text-xs font-medium text-left text-white break-all">
+                <h2 className="font-roboto text-xs sm:text-base font-medium text-left text-white break-all">
                   {movie.title}
                 </h2>
                 <p className="text-gray-300 text-xs">{movie.release_date}</p>

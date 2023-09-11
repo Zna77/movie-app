@@ -34,11 +34,11 @@ const Home = () => {
             </Helmet>
             <Hero />
             <div></div>
-            <h1 className="text-lg text-white font-bold uppercase mt-2 mb-2 ml-5">
+            <h1 className="text-medium text-white font-bold uppercase mt-2 mb-2 ml-3">
               Trending
             </h1>
             <Slideshow />
-            <h1 className="text-lg text-white font-bold uppercase my-2 mt-8 ml-5">
+            <h1 className="text-medium text-white font-bold uppercase my-2 mt-8 ml-5">
               Popular Movies
             </h1>
             <MovieList />
