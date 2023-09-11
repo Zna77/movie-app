@@ -13,6 +13,12 @@ import { Autoplay, Pagination, Navigation, Keyboard } from "swiper/modules";
 const Slideshow = () => {
   const [popularMovies, setPopularMovies] = useState([]);
 
+  const arrowStyles = {
+    color: "darkGray", // Customize the color here
+    transform: "scale(0.7)",
+    marginLeft: -6, // Customize the font size here
+  };
+
   useEffect(() => {
     // Fetch popular movies data from TMDB API here
     fetchMovies("popular")
@@ -65,8 +71,8 @@ const Slideshow = () => {
       </Swiper>
 
       {/* Swiper Navigation Buttons */}
-      <div className="swiper-button-next"></div>
-      <div className="swiper-button-prev"></div>
+      <div className="swiper-button-next" style={arrowStyles}></div>
+      <div className="swiper-button-prev" style={arrowStyles}></div>
     </div>
   );
 };
