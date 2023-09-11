@@ -61,7 +61,7 @@ const Slideshow = () => {
                 className="w-full h-full object-contain rounded-2xl"
               />
               <div className="absolute flex flex-col justify-end items-start inset-0 p-2 z-10">
-                <h2 className="font-roboto text-xs font-medium text-left text-white truncate">
+                <h2 className="font-roboto text-xs font-medium text-left text-white break-all">
                   {movie.title}
                 </h2>
                 <p className="text-gray-300 text-xs">{movie.release_date}</p>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { fetchGenres } from "@utils/requests";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
