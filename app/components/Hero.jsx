@@ -28,36 +28,38 @@ const Hero = () => {
   }, [trendingMovie]);
 
   return (
-    <div className="relative w-full h-fit bg-cover text-white">
+    <div className="mt-20 relative w-100 h-99 mx-auto text-white overflow-hidden ">
       {trendingMovie && (
         <>
-          <div className="absolute flex flex-col justify-start items-start p-9 mt-10 space-y-2 z-10">
-            <h1 className="text-5xl font-extrabold uppercase mb-2">
-              {trendingMovie.title}
-            </h1>
-            <p className="text-gray-300 mb-1">{genreData}</p>
-            <div className="flex flex-row justify-center items-baseline space-x-2">
-              <FontAwesomeIcon
-                icon={faStar}
-                className="text-yellow-400 text-xl"
-              />
-              <p className="text-yellow-400 text-xl">
-                {trendingMovie.vote_average}
-              </p>
-              <p className="text-gray-300 text-lg ml-2">
-                ({trendingMovie.vote_count} votes)
-              </p>
-            </div>
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent"></div>
           <img
             src={`https://image.tmdb.org/t/p/original${trendingMovie.poster_path}`}
             alt={trendingMovie.title}
-            className="w-full h-100 object-cover"
+            className="w-full h-full object-cover rounded-xl transition ease-in duration-200 hover:cursor-pointer hover:scale-105 opacity-50"
           />
-          <div className="absolute inset-0 flex flex-col justify-center items-start p-9">
-            <div className="flex flex-col space-y-4">
-              <p className="w-[700px] text-base text-gray-100 break-all">
+
+          <div className="inset-0 max-w-3xl absolute flex flex-col justify-start items-start p-9 mt-10 space-y-1 z-10">
+            <h1
+              className={`font-roboto text-5xl text-white font-semibold uppercase`}
+            >
+              {trendingMovie.title}
+            </h1>
+            <p className="text-gray-400">{genreData}</p>
+            <p className="text-gray-400">
+              Release Date: {trendingMovie.release_date}
+            </p>
+            <div className="flex flex-row justify-center items-baseline space-x-2 font-medium text-lg">
+              <div className="font-semibold text-sm px-2 py-1 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 flex flex-row justify-center items-baseline">
+                <FontAwesomeIcon icon={faStar} className="pr-1" />
+                {trendingMovie.vote_average.toFixed(1)}
+              </div>
+              <p className="text-gray-300/90 text-base ml-2 font-medium">
+                ({trendingMovie.vote_count} votes)
+              </p>
+            </div>
+            <div className="flex flex-col space-y-4 pt-10 ">
+              <p
+                className={`w-[700px] text-base text-gray-200/90 break-none font-roboto`}
+              >
                 {trendingMovie.overview}
               </p>
               <Link href={`/movie/${trendingMovie.id}`}>

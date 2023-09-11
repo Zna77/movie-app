@@ -2,7 +2,6 @@ import axios from "axios";
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
-// const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const instance = axios.create({
   baseURL: TMDB_BASE_URL,
@@ -11,9 +10,13 @@ const instance = axios.create({
   },
 });
 
-export const fetchMovies = async () => {
+export const fetchMovies = async (page = 1) => {
   try {
-    const response = await instance.get("/movie/popular");
+    const response = await instance.get("/movie/popular", {
+      params: {
+        page,
+      },
+    });
     return response.data;
   } catch (error) {
     throw error;

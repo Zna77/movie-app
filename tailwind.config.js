@@ -7,19 +7,20 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      roboto: ["Roboto", "sans-serif"],
+      roboto: ["Roboto", "sans"],
+      poppins: ["Poppins", "sans"],
     },
     extend: {
-      height: {
-        100: "38rem",
-        99: "36rem",
+      width: {
+        100: "85rem",
       },
 
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      height: {
+        100: "38rem",
+        99: "33rem",
       },
+
+      backgroundImage: {},
     },
   },
   plugins: [],
