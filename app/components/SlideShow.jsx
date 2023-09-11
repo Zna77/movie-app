@@ -44,7 +44,7 @@ const Slideshow = () => {
         {popularMovies.map((movie) => (
           <SwiperSlide key={movie.id}>
             <div className={`relative h-fit hover:cursor-pointer`}>
-              <div className="absolute flex flex-row justify-end items-baseline top-1 left-1 text-white font-medium text-xs px-1 text-center rounded-full z-50">
+              <div className="absolute flex flex-row justify-end items-baseline top-1 left-1 text-yellow-300 font-medium text-xs px-1 text-center rounded-full z-50">
                 <FontAwesomeIcon icon={faStar} className="pr-1" />
                 {movie.vote_average.toFixed(1)}
               </div>

@@ -39,7 +39,7 @@ const Hero = () => {
 
           <div className="inset-0 space-y-1 py-10 px-4 max-w-fit absolute text-center text-sm z-10">
             <h1
-              className={`font-roboto text-2xl text-center text-white font-semibold break-all uppercase`}
+              className={`font-roboto text-2xl text-center text-white font-semibold break-normal uppercase`}
             >
               {trendingMovie.title}
             </h1>
