@@ -18,6 +18,7 @@ module.exports = {
       height: {
         100: "38rem",
         99: "33rem",
+        98: "30rem",
       },
 
       backgroundImage: {},
