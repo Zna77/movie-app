@@ -24,9 +24,9 @@ const Slideshow = () => {
     <div className="relative font-normal">
       <Swiper
         direction={"horizontal"}
-        slidesPerView={3}
+        slidesPerView={2}
         loop={true}
-        spaceBetween={15}
+        spaceBetween={5}
         keyboard={{
           enabled: true,
         }}
@@ -53,7 +53,7 @@ const Slideshow = () => {
                 alt={movie.title}
                 className="w-full h-full object-contain rounded-2xl"
               />
-              <div className="absolute inset-0 px-1 pt-6 z-10">
+              <div className="absolute flex flex-col justify-end items-start inset-0 p-2 z-10">
                 <h2 className="font-roboto text-xs font-medium text-left text-white truncate">
                   {movie.title}
                 </h2>
