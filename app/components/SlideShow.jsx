@@ -21,12 +21,12 @@ const Slideshow = () => {
   }, []);
 
   return (
-    <div className="relative mb-10 overflow-hidden">
+    <div className="relative font-normal">
       <Swiper
         direction={"horizontal"}
         slidesPerView={3}
         loop={true}
-        spaceBetween={30}
+        spaceBetween={15}
         keyboard={{
           enabled: true,
         }}
@@ -43,23 +43,21 @@ const Slideshow = () => {
       >
         {popularMovies.map((movie) => (
           <SwiperSlide key={movie.id}>
-            <div
-              className={`relative h-fit hover:cursor-pointer hover:scale-105 transition ease-in duration-200`}
-            >
-              <div className="absolute flex flex-row justify-end items-baseline top-3 left-3 text-white font-semibold text-xs text-center px-2 py-1 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 z-50">
+            <div className={`relative h-fit hover:cursor-pointer`}>
+              <div className="absolute flex flex-row justify-end items-baseline top-1 left-1 text-white font-medium text-xs px-1 text-center rounded-full z-50">
                 <FontAwesomeIcon icon={faStar} className="pr-1" />
                 {movie.vote_average.toFixed(1)}
               </div>
               <img
                 src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
                 alt={movie.title}
-                className="w-full h-full object-contain opacity-70 rounded-2xl"
+                className="w-full h-full object-contain rounded-2xl"
               />
-              <div className="absolute inset-0 flex flex-col justify-end items-start p-4">
-                <h2 className="font-roboto text-2xl font-semibold text-white">
+              <div className="absolute inset-0 px-1 pt-6 z-10">
+                <h2 className="font-roboto text-xs font-medium text-left text-white truncate">
                   {movie.title}
                 </h2>
-                <p className="text-gray-300">{movie.release_date}</p>
+                <p className="text-gray-300 text-xs">{movie.release_date}</p>
               </div>
             </div>
           </SwiperSlide>

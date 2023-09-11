@@ -28,42 +28,40 @@ const Hero = () => {
   }, [trendingMovie]);
 
   return (
-    <div className="mt-20 relative w-100 h-99 mx-auto text-white overflow-hidden ">
+    <div className="relative w-fit lg:w-100 h-full flex flex-col justify-center items-center space-y-4 lg:h-99 mx-auto text-white overflow-hidden">
       {trendingMovie && (
         <>
           <img
             src={`https://image.tmdb.org/t/p/original${trendingMovie.poster_path}`}
             alt={trendingMovie.title}
-            className="w-full h-full object-cover rounded-xl transition ease-in duration-200 hover:cursor-pointer hover:scale-105 opacity-50"
+            className="w-full h-full object-contain rounded-xl opacity-60"
           />
 
-          <div className="inset-0 max-w-3xl absolute flex flex-col justify-start items-start p-9 mt-10 space-y-1 z-10">
+          <div className="inset-0 space-y-1 py-10 px-4 max-w-fit absolute text-center text-sm z-10">
             <h1
-              className={`font-roboto text-5xl text-white font-semibold uppercase`}
+              className={`font-roboto text-2xl text-center text-white font-semibold break-all uppercase`}
             >
               {trendingMovie.title}
             </h1>
-            <p className="text-gray-400">{genreData}</p>
-            <p className="text-gray-400">
+            <p className="text-gray-300">{genreData}</p>
+            <p className="text-gray-300">
               Release Date: {trendingMovie.release_date}
             </p>
             <div className="flex flex-row justify-center items-baseline space-x-2 font-medium text-lg">
-              <div className="font-semibold text-sm px-2 py-1 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 flex flex-row justify-center items-baseline">
+              <div className="font-medium text-sm px-1 py-1 rounded-full flex flex-row justify-center items-baseline">
                 <FontAwesomeIcon icon={faStar} className="pr-1" />
                 {trendingMovie.vote_average.toFixed(1)}
               </div>
-              <p className="text-gray-300/90 text-base ml-2 font-medium">
+              <p className="text-gray-300/90 text-sm ml-2 font-medium">
                 ({trendingMovie.vote_count} votes)
               </p>
             </div>
-            <div className="flex flex-col space-y-4 pt-10 ">
-              <p
-                className={`w-[700px] text-base text-gray-200/90 break-none font-roboto`}
-              >
+            <div className="flex flex-col justify-center items-center mt-10 space-y-6 ">
+              <p className={`w-fit h-fit text-gray-100 font-roboto `}>
                 {trendingMovie.overview}
               </p>
               <Link href={`/movie/${trendingMovie.id}`}>
-                <button className="bg-indigo-700 text-white px-8 py-2 rounded-lg hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-red-400">
+                <button className="bg-indigo-700 text-white font-semibold px-8 py-2 rounded-full hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-red-400">
                   Watch Now
                 </button>
               </Link>

@@ -19,7 +19,7 @@ const Home = () => {
     // Simulate loading data for demonstration purposes
     setTimeout(() => {
       setIsLoading(false); // Set to false when data is loaded
-    }, 3000); // Adjust the duration as needed
+    }, 500); // Adjust the duration as needed
   }, []);
 
   return (
@@ -36,11 +36,11 @@ const Home = () => {
               </Helmet>
               <Hero />
               <div></div>
-              <h1 className="text-2xl text-white font-bold uppercase mt-10 mb-5 ml-5">
+              <h1 className="text-lg text-white font-bold uppercase mt-2 mb-2 ml-5">
                 Trending
               </h1>
               <Slideshow />
-              <h1 className="text-2xl text-white font-bold uppercase my-4 mt-10 ml-5">
+              <h1 className="text-lg text-white font-bold uppercase my-2 mt-8 ml-5">
                 Popular Movies
               </h1>
               <MovieList />

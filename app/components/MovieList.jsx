@@ -48,24 +48,24 @@ const MovieList = () => {
   }, [page]);
 
   return (
-    <div className="flex flex-wrap justify-center items-center">
+    <div className="w-full px-4 sm:px-8 lg:px-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
       {movies.map((movie, index) => (
         <div
           key={movie.id}
           ref={index === movies.length - 1 ? lastMovieRef : null}
-          className="relative sm:w-1/3 md:w-1/4 lg:w-1/5 p-4 transition-all ease-out hover:scale-105"
+          className="relative w-full md:w-24"
         >
-          <div className="absolute top-6 left-6 font-semibold text-white text-xs px-2 py-1 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 flex flex-row justify-end items-baseline z-50">
+          <div className="absolute top-2 left-2 font-semibold text-white text-xs px-2 py-1 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 flex flex-row justify-end items-baseline z-50">
             <FontAwesomeIcon icon={faStar} className="pr-1" />
             {movie.vote_average.toFixed(1)}
           </div>
-          <div className="w-60 h-full border-3 bg-gradient-to-b from-gray-900 to-slate-950 rounded-md overflow-hidden">
+          <div className="w-full md:w-56 h-fit border-3 bg-gradient-to-b from-gray-900 to-slate-950 rounded-md overflow-hidden">
             <img
               src={`${TMDB_IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`}
               alt={movie.title}
               className="cursor-pointer w-full h-full object-contain "
             />
-            <div className="p-4">
+            <div className="p-4 text-center">
               <h2
                 className={`text-white text-xl font-semibold mb-2 truncate font-roboto`}
               >
