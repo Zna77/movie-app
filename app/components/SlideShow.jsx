@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
@@ -28,12 +29,12 @@ const Slideshow = () => {
   }, []);
 
   return (
-    <div className="relative font-normal">
+    <div className="relative font-normal md:font-lg">
       <Swiper
         direction={"horizontal"}
         slidesPerView={2}
         loop={true}
-        spaceBetween={5}
+        spaceBetween={10}
         keyboard={{
           enabled: true,
         }}
@@ -51,17 +52,17 @@ const Slideshow = () => {
         {popularMovies.map((movie) => (
           <SwiperSlide key={movie.id}>
             <div className={`relative h-fit hover:cursor-pointer`}>
-              <div className="absolute flex flex-row justify-end items-baseline top-1 left-1 text-yellow-300 font-medium text-xs px-1 text-center rounded-full z-50">
+              <div className="absolute flex flex-row justify-end items-baseline top-1 left-1 text-yellow-300 font-medium text-xs px-1 text-center rounded-full sm:bg-gradient-to-r from-sky-500 to-indigo-500 sm:text-white sm:px-2 sm:py-1 z-50">
                 <FontAwesomeIcon icon={faStar} className="pr-1" />
                 {movie.vote_average.toFixed(1)}
               </div>
               <img
                 src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
                 alt={movie.title}
-                className="w-full h-full object-contain rounded-2xl opacity-90"
+                className="w-full h-full object-contain rounded-2xl opacity-80"
               />
               <div className="absolute flex flex-col justify-end items-start inset-0 p-2 z-10">
-                <h2 className="font-roboto text-xs sm:text-base font-medium text-left text-white break-all">
+                <h2 className="font-roboto text-xs sm:text-base md:text-xl font-medium text-left text-white break-all">
                   {movie.title}
                 </h2>
                 <p className="text-gray-300 text-xs">{movie.release_date}</p>

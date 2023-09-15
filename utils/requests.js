@@ -1,44 +1,32 @@
-import axios from "axios";
-
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
-const TMDB_BASE_URL = "https://api.themoviedb.org/3";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-const instance = axios.create({
-  baseURL: TMDB_BASE_URL,
-  params: {
-    api_key: API_KEY,
-  },
-});
-
-export const fetchMovies = async (page = 1) => {
-  try {
-    const response = await instance.get("/movie/popular", {
-      params: {
-        page,
-      },
-    });
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
+export const fetchMovies = async () => {
+  const res = await fetch(
+    `${BASE_URL}/movie/popular?language=en-US&api_key=${API_KEY}`
+  );
+  const data = await res.json();
+  return data.results;
 };
 
-export const fetchGenres = async (genreIds) => {
-  try {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`
-    );
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    const data = await response.json();
-    const genreData = genreIds.map((genreId) => {
-      const genre = data.genres.find((item) => item.id === genreId);
-      return genre ? genre.name : "Unknown";
-    });
-    return genreData.join(" / ");
-  } catch (error) {
-    console.error("Error fetching genre data:", error);
-    return "Unknown";
-  }
-};
+// const instance = axios.create({
+//   baseURL: TMDB_BASE_URL,
+//   params: {
+//     api_key: API_KEY,
+//   },
+// });
+
+// export const fetchGenres = async (genreIds) => {
+//   try {
+//     const response = await instance.get(`/genre/movie/list`);
+
+//     const genreData = genreIds.map((genreId) => {
+//       const genre = response.data.genres.find((item) => item.id === genreId);
+//       return genre ? genre.name : "Unknown";
+//     });
+//     return genreData.join(" | ");
+//   } catch (error) {
+//     console.error("Error fetching genre data:", error);
+//     return "Unknown";
+//   }
+// };
