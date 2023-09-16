@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,17 +9,17 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { fetchMovies } from "@utils/requests";
 
-// Install Swiper modules
+// Swiper modules
 import { Autoplay, Pagination, Navigation, Keyboard } from "swiper/modules";
 
 const Slideshow = () => {
   const [popularMovies, setPopularMovies] = useState([]);
 
   const arrowStyles = {
-    color: "darkGray", // Customize the color here
+    color: "darkGray",
     transform: "scale(0.7)",
     marginLeft: -12,
-    marginRight: -12, // Customize the font size here
+    marginRight: -12,
   };
 
   useEffect(() => {
@@ -56,10 +57,11 @@ const Slideshow = () => {
                 <FontAwesomeIcon icon={faStar} className="pr-1" />
                 {movie.vote_average.toFixed(1)}
               </div>
-              <img
+              <Image
                 src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
                 alt={movie.title}
-                className="w-full h-full object-contain rounded-2xl opacity-80"
+                width={500}
+                height={300}
               />
               <div className="absolute flex flex-col justify-end items-start inset-0 p-2 z-10">
                 <h2 className="font-roboto text-xs sm:text-base md:text-xl font-medium text-left text-white break-all">
