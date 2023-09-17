@@ -16,18 +16,26 @@ export default async function MovieList() {
         {movies.map((movie) => (
           <div
             key={movie.id}
-            className="w-fit text-white flex flex-col justify-center items-center gap-6 mx-auto bg-black pb-8"
+            className="w-fit text-white relative mx-auto"
+            style={{ maxWidth: "300px" }}
           >
             <Image
               src={`${TMDB_IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`}
               alt={movie.title}
               width={300}
-              height={350}
-              className=""
+              height={300}
+              style={{
+                objectFit: "contain",
+              }}
+              layout="responsive"
+              className="rounded-tl-3xl rounded-3xl"
             />
-            <h1 className="text-white text-center font-semibold text-xl w-64 truncate">
-              {movie.title}
-            </h1>
+
+            <div className="absolute bottom-0 left-0 right-0 h-14 bg-black/40 backdrop-blur-md rounded-bl-3xl rounded-br-3xl bg-opacity-50 p-3">
+              <h1 className="text-white text-center font-semibold text-xl truncate">
+                {movie.title}
+              </h1>
+            </div>
           </div>
         ))}
       </div>
