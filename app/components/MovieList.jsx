@@ -11,20 +11,23 @@ export default async function MovieList() {
   const movies = await fetchMovies();
 
   return (
-    <div className="w-full h-screen">
-      <div className="">
+    <div className="w-full h-screen mt-16">
+      <div className="space-y-9">
         {movies.map((movie) => (
           <div
             key={movie.id}
-            className="text-white flex flex-col justify-center items-center"
+            className="w-fit text-white flex flex-col justify-center items-center gap-6 mx-auto bg-black pb-8"
           >
             <Image
               src={`${TMDB_IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`}
               alt={movie.title}
               width={300}
-              height={400}
+              height={350}
+              className=""
             />
-            <h1 className="text-white text-center">{movie.title}</h1>
+            <h1 className="text-white text-center font-semibold text-xl w-64 truncate">
+              {movie.title}
+            </h1>
           </div>
         ))}
       </div>
