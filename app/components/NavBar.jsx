@@ -7,15 +7,19 @@ import {
   FaCompass,
   FaBookmark,
   FaUserCircle,
+  FaSearch,
 } from "react-icons/fa";
 
 export default function Navbar() {
   return (
     <>
-      <nav className="w-full flex flex-row justify-between text-white p-4 z-50">
+      <nav className="w-full flex flex-row justify-between items-center text-white p-4 z-50">
         <Link href="/" className="text-2xl font-semibold">
           <span className="uppercase font-bold text-3xl">Netznix</span>
         </Link>
+        <button className="hidden sm:text-xl sm:inline-block">
+          <FaSearch />
+        </button>
         <div className="hidden sm:inline-block text-2xl mr-2">
           <FaBars />
         </div>

@@ -1,41 +1,35 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
+import useSWR from "swr";
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { Autoplay, Pagination, Keyboard, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { fetchMovies } from "@utils/requests";
 
-// Swiper modules
-import { Autoplay, Pagination, Navigation, Keyboard } from "swiper/modules";
+const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/";
+const POSTER_SIZE = "original";
 
 const Slideshow = () => {
-  const [popularMovies, setPopularMovies] = useState([]);
+  const { data: movies, error } = useSWR("movies", fetchMovies);
 
-  const arrowStyles = {
-    color: "darkGray",
-    transform: "scale(0.7)",
-    marginLeft: -12,
-    marginRight: -12,
-  };
+  if (error) {
+    return <div></div>;
+  }
 
-  useEffect(() => {
-    // Fetch popular movies data from TMDB API here
-    fetchMovies("popular")
-      .then((data) => setPopularMovies(data.results))
-      .catch((error) => console.error("Error fetching popular movies:", error));
-  }, []);
+  if (!movies) {
+    return <div></div>;
+  }
 
   return (
-    <div className="relative font-normal md:font-lg">
+    <div className="hidden 2xl:relative 2xl:w-100 2xl:h-fit 2xl:flex 2xl:items-center 2xl:overflow-hidden 2xl:mx-auto 2xl:rounded-3xl">
       <Swiper
         direction={"horizontal"}
-        slidesPerView={2}
+        slidesPerView={1}
         loop={true}
-        spaceBetween={10}
+        spaceBetween={1}
         keyboard={{
           enabled: true,
         }}
@@ -48,35 +42,32 @@ const Slideshow = () => {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         }}
-        modules={[Autoplay, Pagination, Navigation, Keyboard]}
+        modules={[Autoplay, Pagination, Keyboard, Navigation]}
       >
-        {popularMovies.map((movie) => (
+        {movies.map((movie) => (
           <SwiperSlide key={movie.id}>
-            <div className={`relative h-fit hover:cursor-pointer`}>
-              <div className="absolute flex flex-row justify-end items-baseline top-1 left-1 text-yellow-300 font-medium text-xs px-1 text-center rounded-full sm:bg-gradient-to-r from-sky-500 to-indigo-500 sm:text-white sm:px-2 sm:py-1 z-50">
-                <FontAwesomeIcon icon={faStar} className="pr-1" />
-                {movie.vote_average.toFixed(1)}
-              </div>
+            <div className="absolute text-7xl text-white font-roboto font-bold uppercase p-20 z-50">
+              <h1>{movie.title}</h1>
+            </div>
+            <div className="">
+              <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
               <Image
-                src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+                src={`${TMDB_IMAGE_BASE_URL}${POSTER_SIZE}${movie.backdrop_path}`}
                 alt={movie.title}
-                width={500}
+                width={300}
                 height={300}
+                layout="responsive"
+                quality={100}
+                className="w-auto"
               />
-              <div className="absolute flex flex-col justify-end items-start inset-0 p-2 z-10">
-                <h2 className="font-roboto text-xs sm:text-base md:text-xl font-medium text-left text-white break-all">
-                  {movie.title}
-                </h2>
-                <p className="text-gray-300 text-xs">{movie.release_date}</p>
-              </div>
             </div>
           </SwiperSlide>
         ))}
-      </Swiper>
 
-      {/* Swiper Navigation Buttons */}
-      <div className="swiper-button-next" style={arrowStyles}></div>
-      <div className="swiper-button-prev" style={arrowStyles}></div>
+        {/* Previous and Next Arrow Buttons */}
+        <div className="swiper-button-prev" style={{ left: "10px" }}></div>
+        <div className="swiper-button-next" style={{ right: "10px" }}></div>
+      </Swiper>
     </div>
   );
 };

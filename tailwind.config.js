@@ -13,7 +13,7 @@ module.exports = {
     extend: {
       width: {
         100: "85rem",
-        99: "50rem",
+        99: "80rem",
       },
 
       height: {

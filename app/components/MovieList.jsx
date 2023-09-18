@@ -35,7 +35,7 @@ export default function MovieList() {
                 width={300}
                 height={300}
                 layout="responsive"
-                className="rounded-tl-3xl rounded-3xl object-contain"
+                className="rounded-3xl object-contain"
               />
               <div className="absolute left-0 right-0 bottom-0 h-16 bg-black/40 backdrop-blur-md rounded-bl-3xl rounded-br-3xl bg-opacity-50 p-3 transform translate-y-full transition-all duration-300 ease-out  group-hover:translate-y-0">
                 <h1 className="text-white text-center font-semibold text-xl truncate">
