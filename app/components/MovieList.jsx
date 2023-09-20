@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
-import useSWR from "swr"; // Import useSWR
+import useSWR from "swr";
+import Link from "next/link";
 import { fetchMovies } from "@utils/requests";
 import Image from "next/image";
 
@@ -28,14 +29,16 @@ export default function MovieList() {
             key={movie.id}
             className="w-fit h-auto flex flex-col flex-wrap justify-center items-center text-white mx-auto"
           >
-            <div className="w-64 sm:w-48 2xl:min-w-[300px] 2xl:max-w-[500px] flex flex-col mb-12 relative overflow-hidden group">
-              <Image
-                src={`${TMDB_IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`}
-                alt={movie.title}
-                width={300}
-                height={300}
-                className="rounded-3xl object-contain"
-              />
+            <div className="w-64 cursor-pointer sm:w-48 2xl:min-w-[300px] 2xl:max-w-[500px] flex flex-col mb-12 relative overflow-hidden group">
+              <Link href={`/movie`}>
+                <Image
+                  src={`${TMDB_IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`}
+                  alt={movie.title}
+                  width={300}
+                  height={300}
+                  className="rounded-3xl object-contain"
+                />
+              </Link>
 
               <div className="absolute left-0 right-0 bottom-0 h-16 bg-black/40 backdrop-blur-md rounded-bl-3xl rounded-br-3xl bg-opacity-50 p-3 transform translate-y-full transition-all duration-300 ease-out  group-hover:translate-y-0">
                 <h1 className="text-white text-center font-semibold text-xl truncate">
