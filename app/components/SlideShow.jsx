@@ -24,7 +24,7 @@ const Slideshow = () => {
   }
 
   return (
-    <div className="hidden 2xl:relative 2xl:w-100 2xl:h-fit 2xl:flex 2xl:items-center 2xl:overflow-hidden 2xl:mx-auto 2xl:rounded-3xl">
+    <div className="hidden 2xl:relative 2xl:w-100 2xl:h-fit 2xl:flex 2xl:items-center 2xl:overflow-hidden 2xl:mx-auto 2xl:rounded-3xl cursor-pointer">
       <Swiper
         direction={"horizontal"}
         slidesPerView={1}
