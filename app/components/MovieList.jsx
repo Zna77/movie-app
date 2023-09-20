@@ -6,7 +6,7 @@ import { fetchMovies } from "@utils/requests";
 import Image from "next/image";
 
 const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/";
-const POSTER_SIZE = "w342";
+const POSTER_SIZE = "w500";
 
 export default function MovieList() {
   const { data: movies, error } = useSWR("movies", fetchMovies); // Use useSWR for data fetching
