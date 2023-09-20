@@ -4,6 +4,7 @@ import Image from "next/image";
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState(null);
+  const [trailerKey, setTrailerKey] = useState(null);
 
   useEffect(() => {
     // Extract the movie ID from the URL using window.location.pathname
@@ -17,15 +18,33 @@ const MovieDetails = () => {
       .then((response) => response.json())
       .then((data) => setMovieDetails(data))
       .catch((error) => console.error("Error fetching movie details:", error));
+
+    // Fetch movie trailers
+    fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        // Find the first trailer video
+        const trailer = data.results.find(
+          (video) => video.type === "Trailer" && video.site === "YouTube"
+        );
+        if (trailer) {
+          setTrailerKey(trailer.key);
+        }
+      })
+      .catch((error) => console.error("Error fetching movie trailers:", error));
   }, []);
 
   if (!movieDetails) {
     return (
-      <div className="bg-black flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center h-screen">
         <div className="text-center text-gray-500">Loading...</div>
       </div>
     );
   }
+
+  const trailerUrl = `https://www.youtube.com/watch?v=${trailerKey}`;
 
   return (
     <div className="bg-black text-white min-h-screen">
@@ -60,6 +79,16 @@ const MovieDetails = () => {
             </p>
             <h2 className="text-2xl mt-6">Overview</h2>
             <p className="text-gray-300 mt-2">{movieDetails.overview}</p>
+            {trailerKey && (
+              <a
+                href={trailerUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-roboto font-semibold uppercase mt-6 inline-block bg-red-600 text-white py-3 px-5 rounded-full hover:bg-red-800 transition duration-300"
+              >
+                Watch Trailer
+              </a>
+            )}
           </div>
         </div>
       </div>
