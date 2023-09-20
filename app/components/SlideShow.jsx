@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 import { fetchMovies } from "@utils/requests";
 
 const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/";
-const POSTER_SIZE = "original";
+const POSTER_SIZE = "w1280";
 
 const Slideshow = () => {
   const { data: movies, error } = useSWR("movies", fetchMovies);
@@ -53,9 +53,10 @@ const Slideshow = () => {
               <Image
                 src={`${TMDB_IMAGE_BASE_URL}${POSTER_SIZE}${movie.backdrop_path}`}
                 alt={movie.title}
-                width={1600}
+                width={700}
                 height={300}
                 quality={100}
+                layout="responsive"
                 className="opacity-60"
               />
             </div>

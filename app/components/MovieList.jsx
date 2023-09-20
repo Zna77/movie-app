@@ -6,7 +6,7 @@ import { fetchMovies } from "@utils/requests";
 import Image from "next/image";
 
 const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/";
-const POSTER_SIZE = "original";
+const POSTER_SIZE = "w342";
 
 export default function MovieList() {
   const { data: movies, error } = useSWR("movies", fetchMovies); // Use useSWR for data fetching
@@ -30,7 +30,7 @@ export default function MovieList() {
             className="w-fit h-auto flex flex-col flex-wrap justify-center items-center text-white mx-auto"
           >
             <div className="w-64 cursor-pointer sm:w-48 2xl:min-w-[300px] 2xl:max-w-[500px] flex flex-col mb-12 relative overflow-hidden group">
-              <Link href={`/movie`}>
+              <Link href={`/movie/${movie.id}`}>
                 <Image
                   src={`${TMDB_IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`}
                   alt={movie.title}
