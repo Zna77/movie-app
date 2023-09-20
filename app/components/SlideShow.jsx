@@ -50,21 +50,18 @@ const Slideshow = () => {
               <h1>{movie.title}</h1>
             </div>
             <div className="">
-              <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
               <Image
                 src={`${TMDB_IMAGE_BASE_URL}${POSTER_SIZE}${movie.backdrop_path}`}
                 alt={movie.title}
-                width={300}
+                width={1600}
                 height={300}
-                layout="responsive"
                 quality={100}
-                className="w-auto"
+                className="opacity-60"
               />
             </div>
           </SwiperSlide>
         ))}
 
-        {/* Previous and Next Arrow Buttons */}
         <div className="swiper-button-prev" style={{ left: "10px" }}></div>
         <div className="swiper-button-next" style={{ right: "10px" }}></div>
       </Swiper>

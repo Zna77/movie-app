@@ -17,7 +17,7 @@ export default function Navbar() {
         <Link href="/" className="text-2xl font-semibold">
           <span className="uppercase font-bold text-3xl">Netznix</span>
         </Link>
-        <button className="hidden sm:text-xl sm:inline-block">
+        <button className="sm:hidden sm:text-xl">
           <FaSearch />
         </button>
         <div className="hidden sm:inline-block text-2xl mr-2">
