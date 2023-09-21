@@ -38,7 +38,7 @@ const MovieDetails = () => {
 
   if (!movieDetails) {
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="bg-black flex justify-center items-center h-screen">
         <div className="text-center text-gray-500">Loading...</div>
       </div>
     );
@@ -65,7 +65,7 @@ const MovieDetails = () => {
             </div>
           </div>
           <div className="md:w-2/3 pl-8">
-            <h1 className="text-4xl font-semibold mt-4 md:mt-0">
+            <h1 className="text-4xl font-roboto font-semibold mt-4 md:mt-0">
               {movieDetails.title}
             </h1>
             <p className="text-gray-400 mt-2">
@@ -77,7 +77,16 @@ const MovieDetails = () => {
             <p className="text-gray-400 mt-2">
               Rating: {movieDetails.vote_average.toFixed(1)}/10
             </p>
-            <h2 className="text-2xl mt-6">Overview</h2>
+            <h2 className="text-2xl mt-6 font-roboto">Genres</h2>
+            <ul className="text-gray-300 mt-2">
+              {movieDetails.genres.map((genre) => (
+                <li key={genre.id}>
+                  {genre.name}
+                  {","}
+                </li>
+              ))}
+            </ul>
+            <h2 className="text-2xl mt-6 font-roboto">Overview</h2>
             <p className="text-gray-300 mt-2">{movieDetails.overview}</p>
             {trailerKey && (
               <a

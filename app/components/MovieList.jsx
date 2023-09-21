@@ -1,22 +1,79 @@
 "use client";
-import React from "react";
-import useSWR from "swr";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { fetchMovies } from "@utils/requests";
 import Image from "next/image";
 
 const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/";
 const POSTER_SIZE = "w500";
 
 export default function MovieList() {
-  const { data: movies, error } = useSWR("movies", fetchMovies); // Use useSWR for data fetching
+  const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [loadedMovieIds, setLoadedMovieIds] = useState(new Set());
+
+  useEffect(() => {
+    // Function to fetch movies for a given page
+    const fetchMoviesForPage = async () => {
+      try {
+        setLoading(true);
+
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/popular?language=en-US&api_key=${process.env.NEXT_PUBLIC_API_KEY}&page=${page}`
+        );
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+
+        // Filter out movies that have already been loaded
+        const newMovies = data.results.filter(
+          (movie) => !loadedMovieIds.has(movie.id)
+        );
+
+        setMovies((prevMovies) => [...prevMovies, ...newMovies]);
+        setPage(page + 1);
+
+        // Update the set of loaded movie IDs
+        newMovies.forEach((movie) => {
+          loadedMovieIds.add(movie.id);
+        });
+
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+        setLoading(false);
+      }
+    };
+
+    // Attach a scroll event listener to trigger loading more movies when scrolled to the bottom
+    const handleScroll = () => {
+      if (
+        window.innerHeight + window.scrollY >=
+          document.documentElement.scrollHeight - 100 &&
+        !loading
+      ) {
+        fetchMoviesForPage();
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [page, loading, loadedMovieIds]);
 
   if (error) {
-    return <div></div>;
+    return <div>Error fetching movies</div>;
   }
 
-  if (!movies) {
-    return <div></div>;
+  if (movies.length === 0 && loading) {
+    return <div>Loading...</div>;
   }
 
   return (

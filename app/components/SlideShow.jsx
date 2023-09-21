@@ -24,12 +24,12 @@ const Slideshow = () => {
   }
 
   return (
-    <div className="hidden 2xl:relative 2xl:w-100 2xl:h-fit 2xl:flex 2xl:items-center 2xl:overflow-hidden 2xl:mx-auto 2xl:rounded-3xl cursor-pointer">
+    <div className="relative w-full">
       <Swiper
         direction={"horizontal"}
         slidesPerView={1}
         loop={true}
-        spaceBetween={1}
+        spaceBetween={0}
         keyboard={{
           enabled: true,
         }}
@@ -46,25 +46,42 @@ const Slideshow = () => {
       >
         {movies.map((movie) => (
           <SwiperSlide key={movie.id}>
-            <div className="absolute text-7xl text-white font-roboto font-bold uppercase p-20 z-50">
-              <h1>{movie.title}</h1>
-            </div>
-            <div className="">
+            <div className="relative h-100 overflow-hidden">
               <Image
                 src={`${TMDB_IMAGE_BASE_URL}${POSTER_SIZE}${movie.backdrop_path}`}
                 alt={movie.title}
-                width={700}
-                height={300}
-                quality={100}
-                layout="responsive"
-                className="opacity-60"
+                layout="fill"
+                objectFit="cover"
               />
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-t from-black to-transparent text-white p-4">
+                <h1 className="text-6xl uppercase font-roboto font-bold mb-2">
+                  {movie.title}
+                </h1>
+                <div className="text-lg font-semibold">
+                  <span className="mr-2">{movie.vote_average.toFixed(1)}</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    className="w-6 h-6 inline-block text-yellow-400"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M8 0a1 1 0 0 1 1 1v11.29l2.854-2.853a1 1 0 1 1 1.415 1.414l-4 4a1 1 0 0 1-1.415 0l-4-4a1 1 0 1 1 1.415-1.414L7 12.29V1a1 1 0 0 1 1-1z"
+                    />
+                  </svg>
+                </div>
+                <div className="text-lg font-semibold mt-2">
+                  <p className="text-gray-400 mt-2">
+                    Released: {movie.release_date}
+                  </p>
+                </div>
+              </div>
             </div>
           </SwiperSlide>
         ))}
-
-        <div className="swiper-button-prev" style={{ left: "10px" }}></div>
-        <div className="swiper-button-next" style={{ right: "10px" }}></div>
+        <div className="swiper-button-prev absolute left-2/4 transform -translate-x-1/2 bottom-4" />
+        <div className="swiper-button-next absolute left-2/4 transform translate-x-1/2 bottom-4" />
       </Swiper>
     </div>
   );
