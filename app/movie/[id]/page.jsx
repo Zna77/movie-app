@@ -46,6 +46,12 @@ const MovieDetails = () => {
 
   const trailerUrl = `https://www.youtube.com/watch?v=${trailerKey}`;
 
+  function formatRuntime(minutes) {
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+    return `${hours}h ${remainingMinutes}min`;
+  }
+
   return (
     <div className="bg-black text-white min-h-screen">
       <div className="container mx-auto px-4 py-16">
@@ -64,7 +70,7 @@ const MovieDetails = () => {
               />
             </div>
           </div>
-          <div className="md:w-2/3 pl-8">
+          <div className="md:w-2/3 pl-8 text-base font-medium">
             <h1 className="text-4xl font-roboto font-semibold mt-4 md:mt-0">
               {movieDetails.title}
             </h1>
@@ -72,10 +78,10 @@ const MovieDetails = () => {
               Released: {movieDetails.release_date}
             </p>
             <p className="text-gray-400 mt-2">
-              Runtime: {movieDetails.runtime} minutes
+              Runtime: {formatRuntime(movieDetails.runtime)}
             </p>
             <p className="text-gray-400 mt-2">
-              Rating: {movieDetails.vote_average.toFixed(1)}/10
+              ⭐⭐⭐⭐⭐ {movieDetails.vote_average.toFixed(1)}/10
             </p>
             <h2 className="text-2xl mt-6 font-roboto">Genres</h2>
             <ul className="text-gray-300 mt-2">
@@ -93,7 +99,7 @@ const MovieDetails = () => {
                 href={trailerUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-roboto font-semibold uppercase mt-6 inline-block bg-red-600 text-white py-3 px-5 rounded-full hover:bg-red-800 transition duration-300"
+                className="bg-red font-roboto font-semibold uppercase mt-6 inline-block bg-red-600 text-white py-3 px-5 rounded-full hover:bg-red/70 transition duration-300"
               >
                 Watch Trailer
               </a>

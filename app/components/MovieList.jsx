@@ -77,7 +77,7 @@ export default function MovieList() {
   }
 
   return (
-    <div className="max-w-full h-screen mt-12 lg:mt-0">
+    <div className="max-w-full h-screen mt-12 lg:mt-28">
       <div
         className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-3 lg:mt-0 px-3`}
       >
@@ -95,11 +95,13 @@ export default function MovieList() {
                 className="object-cover md:hover:scale-105 transition-all ease-in-out"
               />
             </Link>
-            <div className="p-4">
-              <h2 className="text-xl font-semibold text-white truncate">
+            <div className="absolute bottom-0 w-full h-1/4 bg-gradient-to-t from-black to-transparent p-4 text-white">
+              <h2 className="text-xl font-roboto font-semibold text-white truncate mt-10">
                 {movie.title}
               </h2>
-              <p className="text-gray-300">{movie.release_date}</p>
+              <p className="text-gray-300 font-poppins font-medium">
+                {movie.release_date}
+              </p>
             </div>
           </div>
         ))}
