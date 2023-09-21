@@ -4,7 +4,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const fetchMovies = async () => {
   try {
     const res = await fetch(
-      `${BASE_URL}/movie/popular?language=en-US&api_key=${API_KEY}`
+      `${BASE_URL}/trending/movie/day?language=en-US&api_key=${API_KEY}`
     );
     if (!res.ok) {
       throw new Error(`Failed to fetch data from TMDB API: ${res.status}`);

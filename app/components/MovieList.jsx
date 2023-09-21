@@ -77,14 +77,14 @@ export default function MovieList() {
   }
 
   return (
-    <div className="max-w-full h-screen mt-12">
+    <div className="max-w-full h-screen mt-12 lg:mt-0">
       <div
-        className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-3 px-3`}
+        className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-3 lg:mt-0 px-3`}
       >
         {movies.map((movie) => (
           <div
             key={movie.id}
-            className="relative overflow-hidden rounded-lg shadow-lg bg-black group transition-all ease-in-out hover:scale-105"
+            className="relative overflow-hidden rounded-lg shadow-lg bg-black group"
           >
             <Link href={`/movie/${movie.id}`}>
               <Image
@@ -92,7 +92,7 @@ export default function MovieList() {
                 alt={movie.title}
                 width={500}
                 height={750}
-                className="object-cover"
+                className="object-cover md:hover:scale-105 transition-all ease-in-out"
               />
             </Link>
             <div className="p-4">
