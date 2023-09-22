@@ -102,8 +102,11 @@ const Slideshow = () => {
                     </span>
                   ))}
                 </p>
-                <div className="text-base sm:text-lg lg:text-xl font-semibold mb-2 text-center">
+                <div className="flex items-start sm:text-lg lg:text-xl font-semibold mb-2">
                   <StarRating rating={movie.vote_average.toFixed(1)} />
+                  <span className="text-[21px] ml-2">
+                    {movie.vote_average.toFixed(1)}
+                  </span>
                 </div>
                 <p className="text-sm font-roboto font-medium text-gray-400 sm:text-base lg:text-xl text-center">
                   {movie.release_date}

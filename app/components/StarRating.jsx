@@ -1,4 +1,5 @@
 import React from "react";
+import { FaStar } from "react-icons/fa";
 
 const StarRating = ({ rating }) => {
   // Calculate the number of full stars and half star
@@ -10,38 +11,24 @@ const StarRating = ({ rating }) => {
 
   // Add full stars
   for (let i = 0; i < fullStars; i++) {
-    stars.push(
-      <span key={i} className="text-yellow-400">
-        ★
-      </span>
-    );
+    stars.push(<FaStar key={i} className="text-yellow-400 text-2xl" />);
   }
 
   // Add half star if needed
   if (hasHalfStar) {
     stars.push(
-      <span key="half" className="text-yellow-400">
-        ★
-      </span>
+      <FaStar key="half" className="text-yellow-400 text-2xl half-star" />
     );
   }
 
   // Add empty stars to reach a total of 5 stars
   while (stars.length < 5) {
     stars.push(
-      <span key={stars.length} className="text-gray-300">
-        ★
-      </span>
+      <FaStar key={stars.length} className="text-gray-300 text-2xl" />
     );
   }
 
-  return (
-    <div className="flex">
-      {stars.map((star, index) => (
-        <span key={index}>{star}</span>
-      ))}
-    </div>
-  );
+  return <div className="flex">{stars.map((star, index) => star)}</div>;
 };
 
 export default StarRating;

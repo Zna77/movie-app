@@ -1,6 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import StarRating from "@app/components/StarRating";
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState(null);
@@ -54,8 +55,18 @@ const MovieDetails = () => {
 
   return (
     <div className="bg-black text-white min-h-screen">
-      <div className="container mx-auto px-4 py-16">
-        <div className="md:flex">
+      <div className="container mx-auto px-4 py-16 relative">
+        <div
+          style={{
+            backgroundImage: `url(https://image.tmdb.org/t/p/original${movieDetails.poster_path})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            filter: "blur(10px)", // Add blur filter to background image
+            opacity: 0.6,
+          }}
+          className="absolute inset-0"
+        ></div>
+        <div className="md:flex relative">
           <div className="md:w-1/3 relative">
             <div
               className="relative w-full h-0"
@@ -70,20 +81,23 @@ const MovieDetails = () => {
               />
             </div>
           </div>
-          <div className="md:w-2/3 pl-8 text-base font-medium">
-            <h1 className="text-4xl font-roboto font-semibold mt-4 md:mt-0">
+          <div className="md:w-2/3 pl-8 text-lg font-medium">
+            <h1 className="text-4xl font-roboto font-semibold mt-4 md:mt-0 uppercase">
               {movieDetails.title}
             </h1>
-            <p className="text-gray-400 mt-2">
+            <p className="text-gray-300 mt-2">
               Released: {movieDetails.release_date}
             </p>
-            <p className="text-gray-400 mt-2">
+            <p className="text-gray-300 mt-2">
               Runtime: {formatRuntime(movieDetails.runtime)}
             </p>
-            <p className="text-gray-400 mt-2">
-              ⭐⭐⭐⭐⭐ {movieDetails.vote_average.toFixed(1)}/10
-            </p>
-            <h2 className="text-2xl mt-6 font-roboto">Genres</h2>
+            <div className=" flex flex-row items-center sm:text-lg lg:text-xl font-semibold mb-2 text-center">
+              <StarRating rating={movieDetails.vote_average.toFixed(1)} />
+              <span className="text-[22px] ml-2">
+                {movieDetails.vote_average.toFixed(1)}
+              </span>
+            </div>
+            <h2 className="text-2xl mt-6 font-roboto">Genres:</h2>
             <ul className="text-gray-300 mt-2">
               {movieDetails.genres.map((genre) => (
                 <li key={genre.id}>
@@ -92,14 +106,14 @@ const MovieDetails = () => {
                 </li>
               ))}
             </ul>
-            <h2 className="text-2xl mt-6 font-roboto">Overview</h2>
+            <h2 className="text-2xl mt-6 font-roboto">Overview:</h2>
             <p className="text-gray-300 mt-2">{movieDetails.overview}</p>
             {trailerKey && (
               <a
                 href={trailerUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-red font-roboto font-semibold uppercase mt-6 inline-block bg-red-600 text-white py-3 px-5 rounded-full hover:bg-red/70 transition duration-300"
+                className="bg-red font-roboto font-bold uppercase mt-6 inline-block bg-red-600 text-white py-3 px-5 rounded-full hover:bg-red/70 transition duration-300"
               >
                 Watch Trailer
               </a>
