@@ -109,7 +109,7 @@ export default function MovieList() {
               />
             </Link>
             <div className="absolute bottom-0 w-full h-1/4 bg-gradient-to-t from-black to-transparent p-4 text-white">
-              <h2 className="text-xl font-roboto font-semibold text-white truncate mt-20 sm:mt-10 md:mt-2 lg:mt-1 2xl:mt-10">
+              <h2 className="text-xl font-roboto font-semibold text-white truncate mt-9 sm:mt-10 md:mt-2 lg:mt-1 2xl:mt-10">
                 {movie.title}
               </h2>
               <p className="text-gray-300 font-poppins font-medium">

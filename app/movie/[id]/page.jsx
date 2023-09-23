@@ -112,7 +112,7 @@ const MovieDetails = () => {
                 href={trailerUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-red font-roboto font-extrabold uppercase mt-6 inline-block bg-red-600 text-white py-3 px-5 rounded-full hover:bg-red/70 transition duration-300"
+                className="bg-red font-roboto font-extrabold uppercase mt-6 inline-block bg-red-600 text-base lg:text-lg text-white py-2 md:py-3 px-4 md:px-5 rounded-full hover:bg-red/70 transition duration-300"
               >
                 Watch Trailer
               </a>
