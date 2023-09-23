@@ -15,7 +15,10 @@ export default function Navbar() {
     <>
       <nav className="w-full flex flex-row justify-between items-center text-white p-4 z-50">
         <Link href="/" className="text-2xl font-semibold">
-          <span className="uppercase font-bold text-3xl">Netznix</span>
+          {/* Updated styling for "Netznix" */}
+          <span className="text-violet-600 text-4xl font-extrabold uppercase tracking-tighter text-red-600">
+            Movix
+          </span>
         </Link>
         <button className="sm:hidden sm:text-xl">
           <FaSearch />

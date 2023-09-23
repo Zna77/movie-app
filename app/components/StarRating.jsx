@@ -11,20 +11,28 @@ const StarRating = ({ rating }) => {
 
   // Add full stars
   for (let i = 0; i < fullStars; i++) {
-    stars.push(<FaStar key={i} className="text-yellow-400 text-2xl" />);
+    stars.push(
+      <FaStar key={i} className="text-yellow-400 text-lg md:text-2xl" />
+    );
   }
 
   // Add half star if needed
   if (hasHalfStar) {
     stars.push(
-      <FaStar key="half" className="text-yellow-400 text-2xl half-star" />
+      <FaStar
+        key="half"
+        className="text-yellow-400 text-lg md:text-2xl half-star"
+      />
     );
   }
 
   // Add empty stars to reach a total of 5 stars
   while (stars.length < 5) {
     stars.push(
-      <FaStar key={stars.length} className="text-gray-300 text-2xl" />
+      <FaStar
+        key={stars.length}
+        className="text-gray-300 text-lg md:text-2xl"
+      />
     );
   }
 

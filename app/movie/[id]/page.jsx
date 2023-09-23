@@ -12,7 +12,6 @@ const MovieDetails = () => {
     const pathParts = window.location.pathname.split("/");
     const movieId = pathParts[pathParts.length - 1];
 
-    // Replace 'YOUR_TMDB_API_KEY' with your actual TMDB API key
     fetch(
       `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
     )
@@ -61,7 +60,7 @@ const MovieDetails = () => {
             backgroundImage: `url(https://image.tmdb.org/t/p/original${movieDetails.poster_path})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            filter: "blur(10px)", // Add blur filter to background image
+            filter: "blur(10px)",
             opacity: 0.6,
           }}
           className="absolute inset-0"
@@ -91,7 +90,7 @@ const MovieDetails = () => {
             <p className="text-gray-300 mt-2">
               Runtime: {formatRuntime(movieDetails.runtime)}
             </p>
-            <div className=" flex flex-row items-center sm:text-lg lg:text-xl font-semibold mb-2 text-center">
+            <div className=" flex flex-row items-center sm:text-lg lg:text-xl font-semibold mt-1 text-center">
               <StarRating rating={movieDetails.vote_average.toFixed(1)} />
               <span className="text-[22px] ml-2">
                 {movieDetails.vote_average.toFixed(1)}
@@ -113,7 +112,7 @@ const MovieDetails = () => {
                 href={trailerUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-red font-roboto font-bold uppercase mt-6 inline-block bg-red-600 text-white py-3 px-5 rounded-full hover:bg-red/70 transition duration-300"
+                className="bg-red font-roboto font-extrabold uppercase mt-6 inline-block bg-red-600 text-white py-3 px-5 rounded-full hover:bg-red/70 transition duration-300"
               >
                 Watch Trailer
               </a>

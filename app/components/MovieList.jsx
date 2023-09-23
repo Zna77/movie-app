@@ -29,10 +29,23 @@ export default function MovieList() {
 
         const data = await response.json();
 
-        // Filter out movies that have already been loaded
-        const newMovies = data.results.filter(
-          (movie) => !loadedMovieIds.has(movie.id)
-        );
+        // Define your filter criteria
+        const filterCriteria = [
+          // Check for specific keywords in the overview (description) that indicate explicit content
+          (movie) =>
+            !movie.overview.toLowerCase().includes("explicit") &&
+            !movie.overview.toLowerCase().includes("mature"),
+          // Add more criteria here as needed
+          // Example: (movie) => !movie.genre_ids.includes(XXX) to exclude specific genres
+        ];
+
+        // Filter out movies that have already been loaded and meet all filter criteria
+        const newMovies = data.results.filter((movie) => {
+          return (
+            !loadedMovieIds.has(movie.id) &&
+            filterCriteria.every((criteria) => criteria(movie))
+          );
+        });
 
         setMovies((prevMovies) => [...prevMovies, ...newMovies]);
         setPage(page + 1);
@@ -96,7 +109,7 @@ export default function MovieList() {
               />
             </Link>
             <div className="absolute bottom-0 w-full h-1/4 bg-gradient-to-t from-black to-transparent p-4 text-white">
-              <h2 className="text-xl font-roboto font-semibold text-white truncate mt-10">
+              <h2 className="text-xl font-roboto font-semibold text-white truncate mt-20 sm:mt-10 md:mt-2 lg:mt-1 2xl:mt-10">
                 {movie.title}
               </h2>
               <p className="text-gray-300 font-poppins font-medium">

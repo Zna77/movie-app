@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className="scroll-smooth scrollbar-thin scrollbar-thumb-gray-500 overflow-y-scroll "
     >
-      <body className="bg-gray-900 min-h-screen font-poppins">{children}</body>
+      <body className="bg-gray-950 min-h-screen font-poppins">{children}</body>
     </html>
   );
 }

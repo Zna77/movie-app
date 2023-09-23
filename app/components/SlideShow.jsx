@@ -1,5 +1,4 @@
 "use client";
-// Slideshow.jsx
 
 import React, { useState, useEffect } from "react";
 import useSWR from "swr";
@@ -59,7 +58,7 @@ const Slideshow = () => {
   };
 
   return (
-    <div className="relative w-full bg-black cursor-pointer">
+    <div className="relative w-full h-fit bg-black cursor-pointer">
       <Swiper
         direction={"horizontal"}
         slidesPerView={1}
@@ -91,7 +90,7 @@ const Slideshow = () => {
                 quality={100}
               />
               <div className="absolute inset-0 flex flex-col justify-center 2xl:justify-start items-center 2xl:items-start bg-gradient-to-t 2xl:bg-gradient-to-r from-black 2xl:via-black/70 to-transparent text-white p-4 lg:pl-12 lg:pt-28 xl:pl-28 xl:pt-32 2xl:pl-36 2xl:pt-48 2xl:space-y-2">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl uppercase font-roboto font-bold text-center leading-tight">
+                <h1 className="text-2xl md:text-5xl lg:text-6xl uppercase font-roboto font-bold text-center leading-tight">
                   {movie.title}
                 </h1>
                 <p className="text-sm text-gray-400 sm:text-base lg:text-xl font-medium text-center mt-2">
@@ -104,7 +103,7 @@ const Slideshow = () => {
                 </p>
                 <div className="flex items-start sm:text-lg lg:text-xl font-semibold mb-2">
                   <StarRating rating={movie.vote_average.toFixed(1)} />
-                  <span className="text-[21px] ml-2">
+                  <span className="text-base md:text-[21px] ml-2">
                     {movie.vote_average.toFixed(1)}
                   </span>
                 </div>
@@ -117,19 +116,18 @@ const Slideshow = () => {
 
                 <div className="text-lg font-roboto font-semibold flex flex-row justify-between items-baseline space-x-8">
                   <button
-                    className="bg-red hover:bg-red/70 text-white py-3 px-5 rounded-full mt-4 focus:outline-none focus:ring-2 focus:ring-red-400 uppercase"
+                    className="bg-red hover:bg-red/70 flex flex-row justify-center items-center truncate text-white text-xs md:text-lg py-2 px-4 lg:py-3 lg:px-5 rounded-full mt-4 focus:outline-none focus:ring-2 focus:ring-red-400 uppercase"
                     onClick={() => handleWatchTrailer(movie.trailerUrl)}
                   >
-                    <RiPlayFill className="w-6 h-6 mr-2 inline" />
+                    <RiPlayFill className="w-4 md:w-6 h-4 md:h-6 mr-1 md:mr-2 inline-block" />
                     Watch Trailer
                   </button>
-                  {/* Add to Favorites Button */}
                   <button
-                    className="bg-yellow-500 hover:bg-yellow-600 text-white py-3 px-5 rounded-full mt-2 focus:outline-none focus:ring-2 focus:ring-yellow-40 uppercase"
+                    className="bg-yellow-500 flex flex-row justify-center items-center truncate hover:bg-yellow-600 text-xs md:text-lg text-white py-2 px-4 lg:px-5 lg:py-3 rounded-full mt-2 focus:outline-none focus:ring-2 focus:ring-yellow-40 uppercase"
                     onClick={() => handleAddToFavorites(movie.id)} // Replace with your favorite logic
                   >
-                    <IoMdHeart className="w-6 h-6 mr-2 inline" />
-                    Add to Favorites
+                    <IoMdHeart className="w-4 md:w-6 h-4 md:h-6 mr-1 md:mr-2 inline-block" />
+                    Add to Favorite
                   </button>
                 </div>
               </div>
