@@ -29,9 +29,7 @@ export default function MovieList() {
 
         const data = await response.json();
 
-        // Define your filter criteria
         const filterCriteria = [
-          // Check for specific keywords in the overview (description) that indicate explicit content
           (movie) =>
             !movie.overview.toLowerCase().includes("explicit") &&
             !movie.overview.toLowerCase().includes("mature"),
@@ -39,7 +37,6 @@ export default function MovieList() {
           // Example: (movie) => !movie.genre_ids.includes(XXX) to exclude specific genres
         ];
 
-        // Filter out movies that have already been loaded and meet all filter criteria
         const newMovies = data.results.filter((movie) => {
           return (
             !loadedMovieIds.has(movie.id) &&
@@ -50,7 +47,6 @@ export default function MovieList() {
         setMovies((prevMovies) => [...prevMovies, ...newMovies]);
         setPage(page + 1);
 
-        // Update the set of loaded movie IDs
         newMovies.forEach((movie) => {
           loadedMovieIds.add(movie.id);
         });

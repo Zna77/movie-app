@@ -1,7 +1,7 @@
 import React from "react";
 import RootLayout from "./layout";
 import MovieList from "./components/MovieList";
-import Navbar from "./components/NavBar";
+import Navbar from "./components/navbar/NavBar";
 import Slideshow from "./components/SlideShow";
 
 const Home = () => {

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import StarRating from "@app/components/StarRating";
+import Link from "next/link";
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState(null);
@@ -55,6 +56,12 @@ const MovieDetails = () => {
   return (
     <div className="bg-black text-white min-h-screen">
       <div className="container mx-auto px-4 py-16 relative">
+        <Link
+          href="/"
+          className="sm:hidden absolute right-9 bottom-16 text-5xl font-bold z-50"
+        >
+          &larr;
+        </Link>
         <div
           style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/original${movieDetails.poster_path})`,
