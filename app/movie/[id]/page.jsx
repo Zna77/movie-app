@@ -61,7 +61,7 @@ const MovieDetails = () => {
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: "blur(10px)",
-            opacity: 0.6,
+            opacity: 0.3,
           }}
           className="absolute inset-0"
         ></div>
@@ -106,7 +106,9 @@ const MovieDetails = () => {
               ))}
             </ul>
             <h2 className="text-2xl mt-6 font-roboto">Overview:</h2>
-            <p className="text-gray-300 mt-2">{movieDetails.overview}</p>
+            <p className="text-gray-200 mt-2 font-roboto font-normal">
+              {movieDetails.overview}
+            </p>
             {trailerKey && (
               <a
                 href={trailerUrl}
