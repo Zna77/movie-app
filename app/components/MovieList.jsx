@@ -29,24 +29,15 @@ export default function MovieList() {
 
         const data = await response.json();
 
-        const filterCriteria = [
-          (movie) =>
-            !movie.overview.toLowerCase().includes("explicit") &&
-            !movie.overview.toLowerCase().includes("mature"),
-          // Add more criteria here as needed
-          // Example: (movie) => !movie.genre_ids.includes(XXX) to exclude specific genres
-        ];
-
-        const newMovies = data.results.filter((movie) => {
-          return (
-            !loadedMovieIds.has(movie.id) &&
-            filterCriteria.every((criteria) => criteria(movie))
-          );
-        });
+        // Filter out movies that have already been loaded
+        const newMovies = data.results.filter(
+          (movie) => !loadedMovieIds.has(movie.id)
+        );
 
         setMovies((prevMovies) => [...prevMovies, ...newMovies]);
         setPage(page + 1);
 
+        // Update the set of loaded movie IDs
         newMovies.forEach((movie) => {
           loadedMovieIds.add(movie.id);
         });
@@ -88,12 +79,12 @@ export default function MovieList() {
   return (
     <div className="max-w-full h-screen mt-12 lg:mt-28">
       <div
-        className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-3 lg:mt-0 px-3`}
+        className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 mt-3 lg:mt-0 px-3`}
       >
         {movies.map((movie) => (
           <div
             key={movie.id}
-            className="relative overflow-hidden rounded-lg shadow-lg bg-black group"
+            className="relative w-80 sm:w-64 xl:w-52 2xl:w-64 overflow-hidden rounded-lg shadow-lg bg-black group mx-auto mt-6"
           >
             <Link href={`/movie/${movie.id}`}>
               <Image
@@ -101,11 +92,11 @@ export default function MovieList() {
                 alt={movie.title}
                 width={500}
                 height={750}
-                className="object-cover md:hover:scale-105 transition-all ease-in-out"
+                className="object-cover md:hover:scale-105 transition-all duration-300 ease-in"
               />
             </Link>
             <div className="absolute bottom-0 w-full h-1/4 bg-gradient-to-t from-black to-transparent p-4 text-white">
-              <h2 className="text-xl font-roboto font-semibold text-white truncate mt-9 sm:mt-10 md:mt-2 lg:mt-1 2xl:mt-10">
+              <h2 className="text-xl font-roboto font-semibold text-white truncate mt-12 sm:mt-6 md:mt-2 lg:mt-4 2xl:mt-4">
                 {movie.title}
               </h2>
               <p className="text-gray-300 font-poppins font-medium">

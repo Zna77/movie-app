@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import StarRating from "@app/components/StarRating";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+import Navbar from "@app/components/navbar/NavBar";
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState(null);
@@ -55,13 +58,14 @@ const MovieDetails = () => {
 
   return (
     <div className="bg-black text-white min-h-screen">
-      <div className="container mx-auto px-4 py-16 relative">
-        <Link
-          href="/"
-          className="sm:hidden absolute right-9 bottom-16 text-5xl font-bold z-50"
-        >
-          &larr;
-        </Link>
+      <Navbar />
+      <Link
+        href="/"
+        className="hidden sm:block left-20 sm:left-6 2xl:left-10 sm:top-4 sm:absolute sm:right-9 sm:text-3xl sm:z-50"
+      >
+        <FontAwesomeIcon icon={faAngleLeft} className="text-gray-300" />
+      </Link>
+      <div className="container mx-auto px-4 py-16 pt-10 relative">
         <div
           style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/original${movieDetails.poster_path})`,
@@ -74,10 +78,7 @@ const MovieDetails = () => {
         ></div>
         <div className="md:flex relative">
           <div className="md:w-1/3 relative">
-            <div
-              className="relative w-full h-0"
-              style={{ paddingBottom: "150%" }}
-            >
+            <div className="relative w-full" style={{ paddingBottom: "150%" }}>
               <Image
                 src={`https://image.tmdb.org/t/p/original${movieDetails.poster_path}`}
                 alt={movieDetails.title}
