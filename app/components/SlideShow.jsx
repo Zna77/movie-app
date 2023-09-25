@@ -134,8 +134,8 @@ const Slideshow = () => {
             </div>
           </SwiperSlide>
         ))}
-        <div className="swiper-button-prev absolute left-2/4 bottom-4 scale-50 md:scale-90" />
-        <div className="swiper-button-next absolute left-2/4 transform bottom-4 scale-50 md:scale-90" />
+        <div className="swiper-button-prev absolute left-2/4 -ml-4 sm:ml-0 bottom-4 scale-50 md:scale-75" />
+        <div className="swiper-button-next absolute left-2/4 -mr-4 sm:mr-0 transform bottom-4 scale-50 md:scale-75" />
       </Swiper>
     </div>
   );
