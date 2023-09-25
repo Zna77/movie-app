@@ -1,10 +1,16 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import MobileNav from "./MobileNav";
-import SearchBar from "./SearchBar";
+import Menu from "./Menu";
+import Sidebar from "../SideMenu";
 
 export default function Navbar() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
   return (
     <>
       <nav className="w-full h-24 bg-gray-950 flex flex-row justify-between items-center text-white p-4 z-50">
@@ -13,9 +19,8 @@ export default function Navbar() {
             Movix
           </span>
         </Link>
-        <div className="mx-auto">
-          <SearchBar />
-        </div>
+        <Menu toggleSidebar={toggleSidebar} />
+        <Sidebar isOpen={isSidebarOpen} />
       </nav>
 
       <MobileNav />

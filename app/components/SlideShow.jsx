@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import useSWR from "swr";
 import Image from "next/image";
@@ -10,7 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import StarRating from "./StarRating";
 import { fetchMovies } from "@utils/requests";
-import { RiPlayFill } from "react-icons/ri"; // Import the Play Icon from react-icons
+import { RiPlayFill } from "react-icons/ri";
 import { IoMdHeart } from "react-icons/io";
 
 const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/";
@@ -89,6 +88,7 @@ const Slideshow = () => {
                 layout="responsive"
                 quality={100}
               />
+
               <div className="absolute inset-0 flex flex-col justify-center 2xl:justify-start items-center 2xl:items-start bg-gradient-to-t 2xl:bg-gradient-to-r from-black 2xl:via-black/70 to-transparent text-white p-4 lg:pl-12 lg:pt-28 xl:pl-28 xl:pt-32 2xl:pl-36 2xl:pt-48 2xl:space-y-2">
                 <h1 className="text-xl md:text-5xl lg:text-6xl uppercase font-roboto font-bold text-center leading-tight">
                   {movie.title}
