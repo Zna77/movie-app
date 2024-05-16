@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/";
-const POSTER_SIZE = "w500";
+const POSTER_SIZE = "original";
 
 export default function MovieList() {
   const [movies, setMovies] = useState([]);
@@ -92,6 +92,7 @@ export default function MovieList() {
                 alt={movie.title}
                 width={500}
                 height={750}
+                quality={100}
                 className="object-cover md:hover:scale-105 transition-all duration-300 ease-in"
               />
             </Link>

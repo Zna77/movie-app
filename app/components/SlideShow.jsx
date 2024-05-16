@@ -88,7 +88,6 @@ const Slideshow = () => {
                 layout="responsive"
                 quality={100}
               />
-
               <div className="absolute inset-0 flex flex-col justify-center 2xl:justify-start items-center 2xl:items-start bg-gradient-to-t 2xl:bg-gradient-to-r from-black 2xl:via-black/70 to-transparent text-white p-4 lg:pl-12 lg:pt-28 xl:pl-28 xl:pt-32 2xl:pl-36 2xl:pt-48 2xl:space-y-2">
                 <h1 className="text-xl md:text-5xl lg:text-6xl uppercase font-roboto font-bold text-center leading-tight">
                   {movie.title}
@@ -113,7 +112,6 @@ const Slideshow = () => {
                 <p className="hidden sm:block sm:w-2/3 md:w-fit 2xl:w-98 text-base sm:text-sm sm:text-gray-200 sm:mt-1 lg:text-xl font-light lg:font-normal mb-3 text-center 2xl:text-left lg:mb-16">
                   {movie.overview}
                 </p>
-
                 <div className="text-lg font-roboto font-semibold lg:font-bold flex flex-row justify-between items-baseline space-x-8">
                   <button
                     className="bg-red hover:bg-red/70 flex flex-row justify-center items-center truncate text-white text-xs md:text-lg py-2 px-4 lg:py-3 lg:px-5 rounded-full mt-4 focus:outline-none focus:ring-2 focus:ring-red-400 uppercase"
